@@ -1,41 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:layouts/Screens/list_screen.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Welcome to Flutter'),
-        ),
-        body: Center(
-          child: titleSectionExpanded,
-        ),
-      ),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Welcome to Flutter',
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Meniu'),
+//         ),
+//         body: Center(
+//           child: RaisedButton(
+//             child: Text('Open route'),
+//             onPressed: () {
+//               Navigator.push(
+//                 context,
+//                 MaterialPageRoute(builder: (context) => ListScreen()),
+//               );
+//             },
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-// To do try some examples with row and columns
-Widget titleSection = Container(
-  padding: const EdgeInsets.all(32),
-  child: Row(
-    children: <Widget>[
-      Icon(
-        Icons.star,
-        color: Colors.red[500],
-      ),
-      Text('41'),
-    ],
-  ),
-);
+// // Container
+// Widget container = Container(
+//     decoration: BoxDecoration(color: Colors.black26),
+//     child: Row(children: [
+//       Text('test'),
+//       Text('test2'),
+//       Icon(
+//         Icons.star,
+//         color: Colors.red[500],
+//       ),
+//     ]));
 
-Widget titleSectionExpanded = Center(
-  child: Text('test'),
-);
+// Widget titleSection = Container(
+//   padding: const EdgeInsets.all(32),
+//   child: Row(
+//     children: <Widget>[
+//       Icon(
+//         Icons.star,
+//         color: Colors.red[500],
+//       ),
+//       Text('41'),
+//     ],
+//   ),
+// );
+
+// Widget titleSectionExpanded = Center(
+//   child: Text('test'),
+// );
 
 // Widget titleSectionExpanded = Center(
 //   Container(
@@ -148,3 +168,64 @@ Widget titleSectionExpanded = Center(
 //     ],
 //   ),
 // );
+
+void main() {
+  runApp(MaterialApp(
+    title: 'Navigation Basics',
+    home: FirstRoute(),
+  ));
+}
+
+class FirstRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Route'),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Open route'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ListScreen()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+Widget _buildButtonsList(BuildContext context) => ListView(
+      children: [_routeButton('List Screen', context)],
+    );
+
+Widget _routeButton(String title, BuildContext context) => RaisedButton(
+      child: Text(title),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ListScreen()),
+        );
+      },
+    );
+// class SecondRoute extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Second Route"),
+//       ),
+//       body: Center(
+//         child: RaisedButton(
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//           child: Text('Go back!'),
+//         ),
+//       ),
+//     );
+//   }
+// }
